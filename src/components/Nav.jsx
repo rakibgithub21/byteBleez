@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 const Nav = () => {
@@ -7,9 +7,9 @@ const Nav = () => {
 
     useEffect(() => {
         const localTheme = localStorage.getItem('theme');
-        document.querySelector('html').setAttribute('data-theme',localTheme)
+        document.querySelector('html').setAttribute('data-theme', localTheme)
     }, [theme])
-    
+
     const handleToggle = (e) => {
         if (e.target.checked) {
             setTheme('synthwave');
@@ -23,13 +23,13 @@ const Nav = () => {
     return (
         <div className="navbar bg-base-100 shadow-lg fixed z-10">
             <div className="flex-1">
-                <a className="btn btn-ghost  gap-0 text-secondary normal-case text-2xl">Byte<span className="text-primary">Blaze</span></a>
+                <Link to='/' className="btn btn-ghost  gap-0 text-secondary normal-case text-2xl">Byte<span className="text-primary">Blaze</span></Link>
             </div>
             <div className="flex-none">
                 <ul className="menu mr-2 gap-5 menu-horizontal px-1">
-                    <Link to='/' className="font-bold"><a>Home</a></Link>
-                    <Link to='/blogs' className="font-bold text-primary"><a>Blogs</a></Link>
-                    <Link to='/bookmarks' className="font-bold"><a>Bookmarks</a></Link>
+                    <NavLink to='/' className={({ isActive }) => isActive ? 'font-bold text-primary' : 'font-bold'} >Home</NavLink>
+                    <NavLink to='/blogs' className={({ isActive }) => isActive ? 'font-bold text-primary' : 'font-bold'}>Blogs</NavLink>
+                    <NavLink to='/bookmarks' className={({ isActive }) => isActive ? 'font-bold text-primary' : 'font-bold'}>Bookmarks</NavLink>
                 </ul>
                 <label className="cursor-pointer grid place-items-center">
                     <input onChange={handleToggle} type="checkbox" value="synthwave" className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2" />
