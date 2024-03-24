@@ -6,7 +6,7 @@ const Blog = () => {
     const blog = useLoaderData();
     const [tabIndex, setTabIndex] = useState(0)
     // console.log(blog);
-    const { comments_count, title, reading_time_minutes,tags, public_reactions_count, published_at } = blog;
+    const { comments_count, title, reading_time_minutes, public_reactions_count, published_at } = blog;
     // console.log(reading_time_minutes);
     return (
         <div className="max-w-3xl px-6 py-16 mx-auto space-y-12">
@@ -41,18 +41,6 @@ const Blog = () => {
                 <Outlet></Outlet>
             </article>
 
-
-            <div>
-                <div className="flex flex-wrap py-6 gap-2 border-t border-dashed dark:border-gray-400">
-                    {
-                        tags.map(tag => <a key={tag} rel="noopener noreferrer" href="#" className="px-3 py-1 rounded-sm hover:underline dark:bg-violet-400 dark:text-gray-900">#{tag}</a>)
-                    }
-                    
-                   
-                   
-                </div>
-                
-            </div>
         </div>
     );
 };
